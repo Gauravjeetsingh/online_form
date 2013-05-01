@@ -3,8 +3,8 @@
  *                                                                      
  *       \brief      A cpp program that is to used to make HTML forms.
  *                                                                      
- *       \version    1.0
- *       \date       Wednesday 01 May 2013 11:00:29  IST
+ *       \version    1.01
+ *       \date       Wednesday 01 May 2013 16:52:13  IST
  *       Compiler    g++
  *                                                                      
  *       \author     Gauravjeet Singh, Gaurav.ishwerdas@gmail.com                             
@@ -60,15 +60,22 @@ void form :: multiValue()
 class choice : public form
 {
    public:void choose();
+          void typeFunc();
+          void Method1();
+          void Method2();
           void submit();
 };
 
-void choice::choose()
+void choice :: typeFunc()
 {
-   cout<<"\nAvailable types:text,password,email,number,file,color,date,time,radio,checkbox\n\n"
-       <<"Enter the type of the field:";
+   cout<<"\nAvailable types:text,password,email,number,file,color,date,time,radio,checkbox\n\n";
+   cout<<"Enter the type of the field:";
    cin>>type;
-   if( (type == metaType[0]) || (type == metaType[1]) || 
+} 
+
+void choice :: choose()
+{
+    if((type == metaType[0]) || (type == metaType[1]) || 
        (type == metaType[2]) || (type == metaType[3]) ||
        (type == metaType[4]) || (type == metaType[5]) ||
        (type == metaType[6]) || (type == metaType[7])   )
@@ -85,6 +92,23 @@ void choice::choose()
    }
 }
 
+void choice :: Method1()
+{
+   typeFunc();
+   choose();
+}
+
+void choice :: Method2()
+{
+   int no;
+   typeFunc();
+   cout<<"Enter the total number of feilds:";
+   cin>>no;
+   for(int i=0; i<no; i++)
+   {  
+    choose();
+   }
+}
 
 void choice :: submit()
 {
@@ -96,7 +120,7 @@ void choice :: submit()
 
 main()
 {
-   char fname[20],ch;
+   char fname[20],ch,MethodChoice;
    int n;
    choice form1;
    cout<<"Enter the file name with extension:";
@@ -105,12 +129,22 @@ main()
    cout<<"############### "<<fname<<" ###############"<<endl;
    file<<"<html><body>\n";
    file<<"<form action=\" \" method=\"GET\">\n";
-   cout<<"Enter total number of fields:";
-   cin>>n;
-   for(int i=0; i<n; i++)
+   cout<<"All fields are of same type y/n:";
+   cin>>MethodChoice;
+   
+   if(MethodChoice == 'n' || MethodChoice == 'N')
    {
-     form1.choose();
+     cout<<"Enter total number of fields:";
+     cin>>n;
+     for(int i=0; i<n; i++)
+       form1.Method1();
    }
+   
+   else if(MethodChoice == 'y' || MethodChoice == 'Y')
+   {
+       form1.Method2();
+   }
+   
    form1.submit();
    file<<"</form>\n";
    file<<"</body></html>";
@@ -118,7 +152,7 @@ main()
    cout<<"\n";
    cout<<"Create another form y/n:";
    cin>>ch;
-   if(ch == 'y')
+   if(ch == 'y' || ch == 'Y')
    {
    cout<<"\n";
    main();
