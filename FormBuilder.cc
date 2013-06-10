@@ -4,18 +4,21 @@
                      in FormBuilder.h.
  *                                                                      
  *       \version    1.0
- *       \date       Sunday 08 June 2013 09:30:13  IST
+ *       \date       Monday 09 June 2013 18:54:13  IST
  *       Compiler    g++
  *                                                                      
  *       \author     Gauravjeet Singh, Gaurav.ishwerdas@gmail.com                             
+
  */
 
 #include<iostream>
 #include<fstream>
 #include"FormBuilder.h"
+
 using namespace std;
 /*For text,password,date,color,email,number,and many such fields*/
-void form :: singleValue()
+
+void makeForm :: singleValue()
 {
    cout<<"Enter the name of field:";
    cin>>name;
@@ -24,7 +27,7 @@ void form :: singleValue()
 }
 
 /*For radio and checkbox fields*/
-void form :: multiValue()
+void makeForm :: multiValue()
 {
    char optionName[20];
    int optionValue;
@@ -44,7 +47,7 @@ void form :: multiValue()
    file<<"<br><br>";
 }
 
-void choice :: typeFunc()
+void newForm :: fieldType()
 {
    cout<<"\nAvailable types:text,password,email,number,file,color,date"
        <<",time,radio,checkbox\n\n";
@@ -52,7 +55,7 @@ void choice :: typeFunc()
    cin>>type;
 } 
 
-void choice :: choose()
+void newForm :: choose()
 {
     if((type == metaType[0]) || (type == metaType[1]) || 
        (type == metaType[2]) || (type == metaType[3]) ||
@@ -71,16 +74,16 @@ void choice :: choose()
    }
 }
 
-void choice :: method1()
+void newForm :: differentType()
 {
-   typeFunc();
+   fieldType();
    choose();
 }
 
-void choice :: method2()
+void newForm :: sameType()
 {
    int no;
-   typeFunc();
+   fieldType();
    cout<<"Enter the total number of feilds:";
    cin>>no;
    for(int i=0; i<no; i++)
@@ -89,7 +92,7 @@ void choice :: method2()
    }
 }
 
-void choice :: submit()
+void newForm :: submit()
 {
    char sname[20];
    cout<<"Enter the name of submit button:";

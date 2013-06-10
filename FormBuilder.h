@@ -4,7 +4,7 @@
  *       \brief      Headerfile that contains the function declaration.
  *                                                                      
  *       \version    1.0
- *       \date       Sunday 08 June 2013 09:30:13  IST
+ *       \date       Monday 09 June 2013 18:51:13  IST
  *       Compiler    g++
  *                                                                      
  *       \author     Gauravjeet Singh, Gaurav.ishwerdas@gmail.com                             
@@ -19,20 +19,19 @@ char type[20];
 string metaType[10] = { "text","password","email","number","file","color"
                         ,"date","time","radio","checkbox" };
 
-class form
+class makeForm
 {
    private:char name[50];
    public :void singleValue();
 	   void multiValue();
 };
 
-class choice : public form
+class newForm : public makeForm
 {
    public:void choose();
-          void typeFunc();
-          void method1();
-          void method2();
+          void fieldType();
+          void sameType();
+          void differentType();
           void submit();
 };
-
 

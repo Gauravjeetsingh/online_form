@@ -4,7 +4,7 @@
  *       \brief      Main cpp program that is used to make HTML forms.
  *                                                                      
  *       \version    1.0
- *       \date       Sunday 08 June 2013 09:30:13  IST
+ *       \date       Monday 09 June 2013 18:56:13  IST
  *       Compiler    g++
  *                                                                      
  *       \author     Gauravjeet Singh, Gaurav.ishwerdas@gmail.com                             
@@ -18,7 +18,7 @@ main()
 {
    char fileName[20],ch,methodChoice;
    int n;
-   choice form1;
+   newForm form1;
    cout<<"Enter the file name with extension:";
    cin>>fileName;
    file.open(fileName);
@@ -33,12 +33,12 @@ main()
      cout<<"Enter total number of fields:";
      cin>>n;
      for(int i=0; i<n; i++)
-       form1.method1();
+       form1.differentType();
    }
    
    else if(methodChoice == 'y' || methodChoice == 'Y')
    {
-       form1.method2();
+       form1.sameType();
    }
    
    form1.submit();
